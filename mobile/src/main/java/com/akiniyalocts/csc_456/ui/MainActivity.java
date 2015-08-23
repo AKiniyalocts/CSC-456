@@ -3,7 +3,6 @@ package com.akiniyalocts.csc_456.ui;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
@@ -62,12 +61,18 @@ public class MainActivity extends ToolbarActivity implements NavigationView.OnNa
                         .replace(R.id.fragment_container,ListFragment.newInstance(ListFragment.TYPE_ADVENTURES))
                         .commit();
                 break;
+
             case R.id.nav_chapters:
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, ListFragment.newInstance(ListFragment.TYPE_CHAPTERS))
                         .commit();
                 break;
 
+            case R.id.nav_badges:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, ListFragment.newInstance(ListFragment.TYPE_BADGES))
+                        .commit();
+                break;
         }
         mDrawerLayout.closeDrawers();
 
@@ -89,9 +94,6 @@ public class MainActivity extends ToolbarActivity implements NavigationView.OnNa
             return true;
         }
 
-        if(id == R.id.nav_adventure){
-            Snackbar.make(mDrawerLayout, "Adventure!", Snackbar.LENGTH_LONG).show();
-        }
 
         return super.onOptionsItemSelected(item);
     }

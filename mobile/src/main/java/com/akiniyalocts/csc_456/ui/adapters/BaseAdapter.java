@@ -1,4 +1,4 @@
-package com.akiniyalocts.csc_456.ui;
+package com.akiniyalocts.csc_456.ui.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -23,12 +23,13 @@ public abstract class BaseAdapter<T, VH extends RecyclerView.ViewHolder> extends
 
     protected OnItemClickListener onItemClickListener;
 
-
     public BaseAdapter(List<T> mList, Context mContext) {
         this.mList = mList;
         this.mContext = mContext;
         this.mInflater = LayoutInflater.from(mContext);
     }
+
+
 
     @Override
     public VH onCreateViewHolder(ViewGroup parent, int viewType) {

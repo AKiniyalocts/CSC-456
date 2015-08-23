@@ -27,6 +27,7 @@
             android:name=".data.GetChaptersService"
             android:exported="false"/>
         <service android:name=".data.GetAdventuresService"/>
+        <service android:name=".data.GetBadgesService"/>
     </application>
 
 </manifest>

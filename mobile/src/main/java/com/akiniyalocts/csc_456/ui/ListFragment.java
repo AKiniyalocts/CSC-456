@@ -10,8 +10,12 @@ import com.akiniyalocts.commons.activities.fragments.ButterKnifeFragment;
 import com.akiniyalocts.csc_456.CSCApplication;
 import com.akiniyalocts.csc_456.R;
 import com.akiniyalocts.csc_456.data.GetAdventuresService;
+import com.akiniyalocts.csc_456.data.GetBadgesService;
 import com.akiniyalocts.csc_456.data.GetChaptersService;
 import com.akiniyalocts.csc_456.model.OttoResult;
+import com.akiniyalocts.csc_456.ui.adapters.AdventuresAdapter;
+import com.akiniyalocts.csc_456.ui.adapters.BadgesAdapter;
+import com.akiniyalocts.csc_456.ui.adapters.ChaptersAdapter;
 import com.squareup.otto.Subscribe;
 
 import butterknife.Bind;
@@ -93,6 +97,7 @@ public class ListFragment extends ButterKnifeFragment{
                 break;
 
             case TYPE_BADGES:
+                mRecycler.setAdapter(new BadgesAdapter(ottoResult.getItems(), getActivity()));
                 break;
         }
 
@@ -105,6 +110,7 @@ public class ListFragment extends ButterKnifeFragment{
 
                 break;
             case TYPE_BADGES:
+                getActivity().startService(new Intent(getActivity(), GetBadgesService.class));
                 break;
 
             default:

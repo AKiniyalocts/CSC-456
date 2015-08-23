@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="100dp"
+    android:clickable="true"
+    android:background="@drawable/selectable_background"
+    android:id="@+id/badges_parent"
+    card_view:cardBackgroundColor="@color/cardview_light_background"
+    card_view:cardUseCompatPadding="true"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/badge_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.akiniyalocts.commons.widgets.MaterialIconTextView
+                style="@style/AppTheme.TextView"
+                android:padding="15dp"
+                android:id="@+id/badge_glyph"
+                android:textSize="108dp"
+                android:textColor="@android:color/white"
+                android:layout_gravity="center_horizontal|center_vertical"
+            />
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@color/trans_light"
+                android:padding="5dp">
+
+                <TextView
+                    style="@style/AppTheme.TextView.Header"
+                    android:id="@+id/badge_title"
+                    android:textColor="@android:color/white"/>
+
+            </FrameLayout>
+
+
+        </FrameLayout>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

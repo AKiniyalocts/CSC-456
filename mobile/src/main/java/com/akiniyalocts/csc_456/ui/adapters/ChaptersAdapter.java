@@ -1,4 +1,4 @@
-package com.akiniyalocts.csc_456.ui;
+package com.akiniyalocts.csc_456.ui.adapters;
 
 import android.content.Context;
 import android.view.View;
