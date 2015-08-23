@@ -11,4 +11,5 @@
     <string name="slides">Slides:</string>
     <string name="about">About</string>
     <string name="github">Github</string>
+    <string name="project_github_url">https://github.com/AKiniyalocts/CSC-456</string>
 </resources>

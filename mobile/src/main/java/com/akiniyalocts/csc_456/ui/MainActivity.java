@@ -1,6 +1,8 @@
 package com.akiniyalocts.csc_456.ui;
 
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
@@ -88,6 +90,11 @@ public class MainActivity extends ToolbarActivity implements NavigationView.OnNa
                         .commit();
                 safeSetSupportActionBarTitle(R.string.badges);
 
+                break;
+
+            case R.id.nav_github:
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.project_github_url)));
+                startActivity(intent);
                 break;
         }
         mDrawerLayout.closeDrawers();
