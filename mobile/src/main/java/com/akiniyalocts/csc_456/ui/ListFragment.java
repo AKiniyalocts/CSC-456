@@ -7,14 +7,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.akiniyalocts.commons.activities.fragments.ButterKnifeFragment;
-import com.akiniyalocts.commons.logging.aLog;
 import com.akiniyalocts.csc_456.CSCApplication;
 import com.akiniyalocts.csc_456.R;
 import com.akiniyalocts.csc_456.data.GetAdventuresService;
 import com.akiniyalocts.csc_456.data.GetChaptersService;
-import com.akiniyalocts.csc_456.model.OttoWrapper;
-import com.akiniyalocts.csc_456.model.pojos.Adventure;
-import com.akiniyalocts.csc_456.model.pojos.Chapter;
+import com.akiniyalocts.csc_456.model.OttoResult;
 import com.squareup.otto.Subscribe;
 
 import butterknife.Bind;
@@ -46,11 +43,11 @@ public class ListFragment extends ButterKnifeFragment{
     private final static String TAG = ListFragment.class.getSimpleName();
 
 
-
     @Bind(R.id.chapters_recycler)
     RecyclerView mRecycler;
 
     private ChaptersAdapter chaptersAdapter;
+
 
     @Override
     public int getContentView() {
@@ -73,33 +70,49 @@ public class ListFragment extends ButterKnifeFragment{
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initRecycler();
+        if(getArguments() != null) {
+            int type = getArguments().getInt(KEY_CONTENT, -1);
 
-        if(savedInstanceState != null) {
-            int type = savedInstanceState.getInt(KEY_CONTENT, -1);
-
-            if (type == TYPE_ADVENTURES)
-                getActivity().startService(new Intent(getActivity(), GetAdventuresService.class));
-            else
-                getActivity().startService(new Intent(getActivity(), GetChaptersService.class));
+            startServiceForType(type);
         }
         else
             getActivity().startService(new Intent(getActivity(), GetChaptersService.class));
-
-
     }
 
     @Subscribe
-    public void onGetChapters(OttoWrapper<Chapter> chapters){
-        chaptersAdapter = new ChaptersAdapter(chapters.getItems(), getActivity());
-        mRecycler.setAdapter(chaptersAdapter);
+    public void onOttoResult(OttoResult ottoResult){
+        switch (ottoResult.getType()){
+
+            case TYPE_ADVENTURES:
+                mRecycler.setAdapter(new AdventuresAdapter(ottoResult.getItems(), getActivity()));
+                break;
+
+            case TYPE_CHAPTERS:
+                chaptersAdapter = new ChaptersAdapter(ottoResult.getItems(), getActivity());
+                mRecycler.setAdapter(chaptersAdapter);
+                break;
+
+            case TYPE_BADGES:
+                break;
+        }
+
     }
-/*
-    @Subscribe
-    public void onGetAdventures(OttoWrapper<Adventure> adventureOttoWrapper){
-        //chaptersAdapter = new ChaptersAdapter(adventureOttoWrapper.getItems(), getActivity())
-        aLog.w(TAG, "Got Adventures" + adventureOttoWrapper.getItems().get(0).getDate());
+
+    private void startServiceForType(int type){
+        switch (type){
+            case TYPE_ADVENTURES:
+                getActivity().startService(new Intent(getActivity(), GetAdventuresService.class));
+
+                break;
+            case TYPE_BADGES:
+                break;
+
+            default:
+                getActivity().startService(new Intent(getActivity(), GetChaptersService.class));
+                break;
+
+        }
     }
-*/
     private void initRecycler(){
         mRecycler.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
     }

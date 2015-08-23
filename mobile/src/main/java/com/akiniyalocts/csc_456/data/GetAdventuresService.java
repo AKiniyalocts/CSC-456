@@ -2,6 +2,7 @@ package com.akiniyalocts.csc_456.data;
 
 import com.akiniyalocts.csc_456.CSCApplication;
 import com.akiniyalocts.csc_456.model.pojos.Adventure;
+import com.akiniyalocts.csc_456.ui.ListFragment;
 
 import java.util.List;
 
@@ -16,6 +17,11 @@ public class GetAdventuresService extends BaseRealmService<Adventure> {
 
     public GetAdventuresService() {
         super();
+    }
+
+    @Override
+    public int getOttoType() {
+        return ListFragment.TYPE_ADVENTURES;
     }
 
     @Override

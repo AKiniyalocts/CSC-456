@@ -3,6 +3,7 @@ package com.akiniyalocts.csc_456.data;
 
 import com.akiniyalocts.csc_456.CSCApplication;
 import com.akiniyalocts.csc_456.model.pojos.Chapter;
+import com.akiniyalocts.csc_456.ui.ListFragment;
 
 import java.util.List;
 
@@ -14,6 +15,11 @@ public class GetChaptersService extends BaseRealmService<Chapter> {
 
     public GetChaptersService() {
         super();
+    }
+
+    @Override
+    public int getOttoType() {
+        return ListFragment.TYPE_CHAPTERS;
     }
 
     @Override

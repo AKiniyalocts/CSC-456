@@ -6,12 +6,15 @@
 
     <application
         android:name=".CSCApplication"
+
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
             android:name=".ui.MainActivity"
+            android:configChanges="orientation|screenLayout|screenSize"
+
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,8 +25,8 @@
 
         <service
             android:name=".data.GetChaptersService"
-            android:exported="false" >
-        </service>
+            android:exported="false"/>
+        <service android:name=".data.GetAdventuresService"/>
     </application>
 
 </manifest>

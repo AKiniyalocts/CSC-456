@@ -8,7 +8,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.akiniyalocts.commons.activities.ToolbarActivity;
 import com.akiniyalocts.csc_456.R;
@@ -62,13 +61,16 @@ public class MainActivity extends ToolbarActivity implements NavigationView.OnNa
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container,ListFragment.newInstance(ListFragment.TYPE_ADVENTURES))
                         .commit();
-                return true;
+                break;
             case R.id.nav_chapters:
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, ListFragment.newInstance(ListFragment.TYPE_CHAPTERS))
                         .commit();
-                return true;
+                break;
+
         }
+        mDrawerLayout.closeDrawers();
+
         return false;
     }
 

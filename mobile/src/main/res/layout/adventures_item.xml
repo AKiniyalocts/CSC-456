@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="100dp"
+    android:clickable="true"
+    android:id="@+id/chapters_parent"
+    card_view:cardBackgroundColor="@color/cardview_light_background"
+    card_view:cardUseCompatPadding="true"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <FrameLayout
+            android:id="@+id/title_wrapper"
+            android:padding="10dp"
+            android:background="@color/primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/AppTheme.TextView.Header"
+                android:textColor="@android:color/white"
+                android:id="@+id/adventure_title"
+                />
+
+        </FrameLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/title_wrapper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/AppTheme.TextView"
+            android:layout_margin="5dp"
+            android:id="@+id/adventure_overview"/>
+
+        <FrameLayout
+            android:id="@+id/date_wrapper"
+            android:layout_below="@+id/adventure_overview"
+            android:padding="5dp"
+            android:background="@color/cardview_shade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/AppTheme.TextView"
+                android:id="@+id/adventure_date"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                style="@style/AppTheme.TextView"
+                android:id="@+id/adventure_xp"
+                android:layout_gravity="right"
+                android:textColor="@color/accent"
+                android:textStyle="bold"/>
+
+        </FrameLayout>
+    </RelativeLayout>
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

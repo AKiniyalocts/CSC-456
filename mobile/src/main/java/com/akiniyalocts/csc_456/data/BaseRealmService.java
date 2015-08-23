@@ -5,7 +5,7 @@ import android.content.Intent;
 
 import com.akiniyalocts.commons.logging.aLog;
 import com.akiniyalocts.csc_456.CSCApplication;
-import com.akiniyalocts.csc_456.model.OttoWrapper;
+import com.akiniyalocts.csc_456.model.OttoResult;
 import com.squareup.otto.Bus;
 
 import java.util.List;
@@ -23,6 +23,8 @@ public abstract class BaseRealmService<T> extends IntentService implements Callb
     public abstract void initRealmManager();
 
     public abstract void doNetworkedTask();
+
+    public abstract int getOttoType();
 
     /**
      * Set intent params if needed. Happens before Network Task and Offline select.
@@ -72,9 +74,10 @@ public abstract class BaseRealmService<T> extends IntentService implements Callb
     }
 
     public void postEvent(){
-        OttoWrapper<T> wrappedItems = new OttoWrapper<>();
-        wrappedItems.setItems(doOfflineSelect());
-        getBus().post(wrappedItems);
+        OttoResult<T> ottoResult = new OttoResult<>();
+        ottoResult.setType(getOttoType());
+        ottoResult.setItems(doOfflineSelect());
+        getBus().post(ottoResult);
     }
 
 }
