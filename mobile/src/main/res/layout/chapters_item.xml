@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="100dp"
+    android:clickable="true"
+    android:id="@+id/audit_parent"
+    card_view:cardBackgroundColor="@color/cardview_light_background"
+    card_view:cardUseCompatPadding="true"
+    >
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/date_header"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/AppTheme.TextView"
+                android:textSize="22sp"
+                android:textColor="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:id="@+id/chapter_date"
+                />
+        </FrameLayout>
+
+        <RelativeLayout
+            android:layout_below="@+id/date_header"
+            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/AppTheme.TextView.Header"
+                android:id="@+id/topics_header"
+                android:text="@string/topics_header"
+                />
+
+            <TextView
+                style="@style/AppTheme.TextView"
+                android:layout_below="@+id/topics_header"
+                android:id="@+id/chapter_topic"/>
+
+
+            <TextView
+                style="@style/AppTheme.TextView.Header"
+                android:text="@string/readings"
+                android:layout_below="@+id/chapter_topic"
+                android:id="@+id/readings_header"/>
+
+            <TextView
+                style="@style/AppTheme.TextView"
+                android:layout_below="@+id/readings_header"
+                android:id="@+id/chapter_reading" />
+
+            <TextView
+                style="@style/AppTheme.TextView.Header"
+                android:text="@string/slides"
+                android:layout_below="@+id/chapter_reading"
+                android:id="@+id/slides_header"/>
+
+            <TextView
+                style="@style/AppTheme.TextView"
+                android:layout_below="@+id/slides_header"
+                android:id="@+id/chapter_slides"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_chapters"
+            android:checked="true"
+            android:icon="@drawable/ic_book_black_18dp"
+            android:title="@string/chapters"/>
+        <item
+            android:id="@+id/nav_adventure"
+            android:checked="false"
+            android:icon="@drawable/ic_adventure_black_18dp"
+            android:title="@string/adventures"/>
+        <item
+            android:id="@+id/nav_badges"
+            android:checked="false"
+            android:icon="@drawable/ic_badges_black_18dp"
+            android:title="@string/badges"/>
+    </group>
+</menu>
