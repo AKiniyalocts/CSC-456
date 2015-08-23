@@ -2,6 +2,8 @@ package com.akiniyalocts.csc_456.ui;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.StringRes;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -60,23 +62,33 @@ public class MainActivity extends ToolbarActivity implements NavigationView.OnNa
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container,ListFragment.newInstance(ListFragment.TYPE_ADVENTURES))
                         .commit();
+                safeSetSupportActionBarTitle(R.string.adventures);
                 break;
 
             case R.id.nav_chapters:
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, ListFragment.newInstance(ListFragment.TYPE_CHAPTERS))
                         .commit();
+                safeSetSupportActionBarTitle(R.string.chapters);
                 break;
 
             case R.id.nav_badges:
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, ListFragment.newInstance(ListFragment.TYPE_BADGES))
                         .commit();
+                safeSetSupportActionBarTitle(R.string.badges);
+
                 break;
         }
         mDrawerLayout.closeDrawers();
 
         return false;
+    }
+
+    private void safeSetSupportActionBarTitle(@NonNull int resId){
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setTitle(resId);
+        }
     }
 
     @Override
