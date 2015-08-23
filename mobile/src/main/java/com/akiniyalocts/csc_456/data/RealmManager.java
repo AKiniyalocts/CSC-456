@@ -6,6 +6,8 @@ import android.support.annotation.NonNull;
 import java.util.List;
 
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
+import io.realm.RealmMigration;
 import io.realm.RealmObject;
 import io.realm.RealmResults;
 
@@ -20,14 +22,22 @@ public class RealmManager<T extends RealmObject> {
 
     protected Class clazz;
 
+    private Realm getRealmFromConfig(Context context){
+            RealmConfiguration.Builder realmBuilder = new RealmConfiguration.Builder(context)
+                    .deleteRealmIfMigrationNeeded();
+        return Realm.getInstance(realmBuilder.build());
+    }
+
     public RealmManager(Context context, Class clazz){
         mContext = context;
         this.clazz = clazz;
-        realm = Realm.getInstance(mContext);
+
+        realm = getRealmFromConfig(mContext);
+
     }
 
     public RealmResults<T> select(){
-        Realm realm = Realm.getInstance(mContext);
+        Realm realm = getRealmFromConfig(mContext);
 
         return realm.where(clazz).findAll();
     }
@@ -41,7 +51,7 @@ public class RealmManager<T extends RealmObject> {
     }
 
     public void updateMultiple(final List<T> realmObjects){
-        Realm realm = Realm.getInstance(mContext);
+        Realm realm = getRealmFromConfig(mContext);
 
         realm.executeTransaction(new Realm.Transaction() {
             @Override
@@ -51,4 +61,5 @@ public class RealmManager<T extends RealmObject> {
             }
         });
     }
+
 }

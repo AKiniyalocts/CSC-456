@@ -58,4 +58,5 @@ public class Badge extends RealmObject{
     public void setId(int id) {
         this.id = id;
     }
+
 }

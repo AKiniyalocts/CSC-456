@@ -9,9 +9,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 import com.akiniyalocts.commons.activities.ToolbarActivity;
 import com.akiniyalocts.csc_456.R;
+import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
 
@@ -25,6 +27,9 @@ public class MainActivity extends ToolbarActivity implements NavigationView.OnNa
 
     @Bind(R.id.nav_view)
     NavigationView mNavigationView;
+
+    @Bind(R.id.drawer_header_image)
+    ImageView mHeaderImage;
 
     private ActionBarDrawerToggle mDrawerToggle;
 
@@ -53,6 +58,11 @@ public class MainActivity extends ToolbarActivity implements NavigationView.OnNa
 
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mNavigationView.setNavigationItemSelectedListener(this);
+        Picasso.with(this)
+                .load(R.drawable.drawer_header_bg)
+                .fit()
+                .centerCrop()
+                .into(mHeaderImage);
     }
 
     @Override

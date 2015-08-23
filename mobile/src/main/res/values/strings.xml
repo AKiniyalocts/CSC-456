@@ -9,4 +9,6 @@
     <string name="topics_header">Topics:</string>
     <string name="readings">Readings:</string>
     <string name="slides">Slides:</string>
+    <string name="about">About</string>
+    <string name="github">Github</string>
 </resources>

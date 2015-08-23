@@ -13,7 +13,10 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.squareup.otto.Bus;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
 import io.realm.RealmList;
+import io.realm.RealmMigration;
 import io.realm.RealmObject;
 import retrofit.RestAdapter;
 import retrofit.converter.GsonConverter;
@@ -35,6 +38,8 @@ public class CSCApplication extends Application {
         aLog.setLogging(true);
         getApi();
     }
+
+
 
     public static Bus getBus(){
         if(bus != null)

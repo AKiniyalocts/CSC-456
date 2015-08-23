@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <group android:checkableBehavior="single">
 
@@ -18,5 +19,23 @@
             android:checked="false"
             android:icon="@drawable/ic_badges_black_18dp"
             android:title="@string/badges"/>
+
+        <item
+            android:checkable="false"
+            android:id="@+id/navigation_sub"
+            android:title="@string/about">
+
+            <menu>
+                <item
+                    android:id="@+id/nav_github"
+                    android:checked="false"
+                    android:checkable="false"
+                    android:icon="@drawable/ic_code_18dp"
+                    android:title="@string/github"/>
+
+            </menu>
+
+        </item>
     </group>
+
 </menu>
