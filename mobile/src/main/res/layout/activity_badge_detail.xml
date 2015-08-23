@@ -1,0 +1,53 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.akiniyalocts.csc_456.ui.BadgeDetailActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <FrameLayout
+        android:id="@+id/detail_badge_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.akiniyalocts.commons.widgets.MaterialIconTextView
+            style="@style/AppTheme.TextView"
+            android:padding="15dp"
+            android:id="@+id/detail_badge_glyph"
+            android:textSize="144dp"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center_horizontal|center_vertical"
+            />
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/trans_light"
+            android:padding="5dp">
+
+            <TextView
+                style="@style/AppTheme.TextView.Header"
+                android:id="@+id/detail_badge_title"
+                android:textColor="@android:color/white"/>
+
+        </FrameLayout>
+
+
+    </FrameLayout>
+
+        <TextView
+            android:layout_below="@+id/detail_badge_bg"
+            style="@style/AppTheme.TextView"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="20sp"
+            android:id="@+id/detail_badge_desc"/>
+
+    </RelativeLayout>
+
+</ScrollView>

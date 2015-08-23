@@ -50,6 +50,13 @@ public class RealmManager<T extends RealmObject> {
             return null;
     }
 
+    public RealmResults<T> queryByFieldname(@NonNull String fieldName, int query){
+        if(!fieldName.trim().isEmpty()){
+            return realm.where(clazz).equalTo(fieldName, query).findAll();
+        }
+        return null;
+    }
+
     public void updateMultiple(final List<T> realmObjects){
         Realm realm = getRealmFromConfig(mContext);
 

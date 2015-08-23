@@ -2,6 +2,7 @@ package com.akiniyalocts.csc_456.ui.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -23,8 +24,9 @@ import butterknife.OnClick;
  */
 public class BadgesAdapter extends BaseAdapter<Badge, BadgesAdapter.BadgeViewHolder> {
 
-    public BadgesAdapter(List<Badge> mList, Context mContext) {
+    public BadgesAdapter(List<Badge> mList, Context mContext, OnItemClickListener onItemClickListener) {
         super(mList, mContext);
+        this.onItemClickListener = onItemClickListener;
     }
 
     @Override
@@ -55,8 +57,15 @@ public class BadgesAdapter extends BaseAdapter<Badge, BadgesAdapter.BadgeViewHol
         @Bind(R.id.badge_bg)
         FrameLayout mFrame;
 
+        @Bind(R.id.badges_parent)
+        CardView mParent;
+
         @OnClick(R.id.badges_parent)
-        public void onBadgeClick(){}
+        public void onBadgeClick(){
+            View[] views = {mGlyph, mTitle};
+
+            onItemClickListener.onItemClick(mList.get(getAdapterPosition()), mParent);
+        }
 
         public BadgeViewHolder(View itemView) {
             super(itemView);

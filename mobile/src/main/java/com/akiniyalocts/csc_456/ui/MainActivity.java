@@ -5,21 +5,30 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.StringRes;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.akiniyalocts.commons.activities.ToolbarActivity;
+import com.akiniyalocts.csc_456.CSCApplication;
 import com.akiniyalocts.csc_456.R;
+import com.akiniyalocts.csc_456.model.pojos.Badge;
+import com.akiniyalocts.csc_456.ui.adapters.BaseAdapter;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
 
-public class MainActivity extends ToolbarActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends ToolbarActivity implements NavigationView.OnNavigationItemSelectedListener, BaseAdapter.OnItemClickListener<Badge>{
+
+    private final static String TAG = MainActivity.class.getSimpleName();
 
     @Bind(R.id.main_toolbar)
     Toolbar mToolbar;
@@ -100,6 +109,25 @@ public class MainActivity extends ToolbarActivity implements NavigationView.OnNa
         mDrawerLayout.closeDrawers();
 
         return false;
+    }
+
+    @Override
+    public void onItemClick(Badge item, View parentView) {
+        Intent intent = new Intent(this, BadgeDetailActivity.class);
+        intent.putExtra(BadgeDetailActivity.BADGE_KEY, item.getId());
+
+        ActivityOptionsCompat activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                this,
+
+                // Now we provide a list of Pair items which contain the view we can transitioning
+                // from, and the name of the view it is transitioning to, in the launched activity
+                new Pair<View, String>(parentView.findViewById(R.id.badge_glyph),
+                        BadgeDetailActivity.BADGE_GLYPH_VIEW_KEY),
+                new Pair<View, String>(parentView.findViewById(R.id.badge_title),
+                        BadgeDetailActivity.BADGE_TITLE_VIEW_KEY));
+
+        ActivityCompat.startActivity(this, intent, activityOptions.toBundle());
+
     }
 
     private void safeSetSupportActionBarTitle(@NonNull int resId){

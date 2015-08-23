@@ -32,6 +32,8 @@ public class CSCApplication extends Application {
 
     private static Bus bus;
 
+    private static Gson gson;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -40,6 +42,15 @@ public class CSCApplication extends Application {
     }
 
 
+    public static Gson getGson(){
+        if(gson != null){
+            return gson;
+        }
+        else {
+            gson = new Gson();
+            return gson;
+        }
+    }
 
     public static Bus getBus(){
         if(bus != null)
