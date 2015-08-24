@@ -2,6 +2,7 @@ package com.akiniyalocts.csc_456;
 
 import android.app.Application;
 
+import com.akiniyalocts.commons.BaseApplication;
 import com.akiniyalocts.commons.logging.aLog;
 import com.akiniyalocts.csc_456.model.API;
 import com.akiniyalocts.csc_456.model.RealmStringDeserializer;
@@ -24,7 +25,7 @@ import retrofit.converter.GsonConverter;
 /**
  * Created by anthony on 8/20/15.
  */
-public class CSCApplication extends Application {
+public class CSCApplication extends BaseApplication {
 
     private static RestAdapter restAdapter;
 

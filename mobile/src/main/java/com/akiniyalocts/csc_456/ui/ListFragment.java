@@ -122,6 +122,12 @@ public class ListFragment extends ButterKnifeFragment{
         }
     }
     private void initRecycler(){
-        mRecycler.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        mRecycler.setLayoutManager(new StaggeredGridLayoutManager(getNumColumns(), StaggeredGridLayoutManager.VERTICAL));
+    }
+    private int getNumColumns(){
+        if(CSCApplication.isTablet())
+            return 3;
+        else
+            return 2;
     }
 }

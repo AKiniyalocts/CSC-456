@@ -130,12 +130,6 @@ public class MainActivity extends ToolbarActivity implements NavigationView.OnNa
 
     }
 
-    private void safeSetSupportActionBarTitle(@NonNull int resId){
-        if(getSupportActionBar() != null){
-            getSupportActionBar().setTitle(resId);
-        }
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
