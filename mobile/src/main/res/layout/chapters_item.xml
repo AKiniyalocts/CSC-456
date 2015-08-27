@@ -66,6 +66,7 @@
 
             <TextView
                 style="@style/AppTheme.TextView"
+                android:autoLink="all"
                 android:layout_below="@+id/slides_header"
                 android:id="@+id/chapter_slides"/>
 

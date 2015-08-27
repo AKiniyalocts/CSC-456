@@ -1,12 +1,14 @@
 package com.akiniyalocts.csc_456.ui.adapters;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.akiniyalocts.csc_456.R;
+import com.akiniyalocts.csc_456.model.API;
 import com.akiniyalocts.csc_456.model.pojos.Chapter;
 import com.akiniyalocts.csc_456.model.pojos.RealmString;
 
@@ -47,15 +49,23 @@ public class ChaptersAdapter extends BaseAdapter<Chapter, ChaptersAdapter.Chapte
 
         String readings = "";
 
+        String slides = "";
+
         for(RealmString topic: chapter.getTopics())
             topics += topic.getStringValue() + "\n";
 
         for(RealmString reading: chapter.getReadings())
             readings += reading.getStringValue() + "\n";
 
+        for(RealmString slide: chapter.getSlides())
+            slides += "<a href=" + "\"API.SLIDES_HOST" + slide.getStringValue()  + "\">" +
+                    slide.getStringValue().substring(slide.getStringValue().lastIndexOf("/") + 1)
+                    + "</a><br><br>" ;
+
         holder.mTopic.setText(topics);
         holder.mReading.setText(readings);
         holder.mDate.setText(chapter.getDate());
+        holder.mSlides.setText(Html.fromHtml(slides));
 
         if(chapter.isNo_class())
             holder.mHeader.setBackgroundColor(colorGreen);
@@ -83,8 +93,10 @@ public class ChaptersAdapter extends BaseAdapter<Chapter, ChaptersAdapter.Chapte
         @Bind(R.id.date_header)
         FrameLayout mHeader;
 
+
         public ChapterViewHolder(View itemView) {
             super(itemView);
+            mSlides.setLinksClickable(true);
         }
     }
 }

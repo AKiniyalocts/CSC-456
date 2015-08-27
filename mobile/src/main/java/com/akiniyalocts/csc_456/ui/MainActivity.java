@@ -17,11 +17,9 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.akiniyalocts.commons.activities.ToolbarActivity;
-import com.akiniyalocts.csc_456.CSCApplication;
 import com.akiniyalocts.csc_456.R;
 import com.akiniyalocts.csc_456.model.pojos.Badge;
 import com.akiniyalocts.csc_456.ui.adapters.BaseAdapter;
-import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
@@ -79,6 +77,15 @@ public class MainActivity extends ToolbarActivity implements NavigationView.OnNa
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
         switch (menuItem.getItemId()){
+
+            case R.id.nav_overview:
+                getSupportFragmentManager().beginTransaction()
+                        .disallowAddToBackStack()
+                        .replace(R.id.fragment_container, OverviewFragment.newInstance())
+                        .commit();
+                safeSetSupportActionBarTitle(R.string.overview);
+                break;
+
             case R.id.nav_adventure:
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container,ListFragment.newInstance(ListFragment.TYPE_ADVENTURES))

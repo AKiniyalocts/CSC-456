@@ -27,6 +27,8 @@ public class BadgeMapper {
             return "\uF33B";
         else if(glyphName.equals("present_to_all"))
             return "\uF3E4";
+        else if(glyphName.equals("mood"))
+            return "\uF214";
         else
             return "\uF262";
     }
