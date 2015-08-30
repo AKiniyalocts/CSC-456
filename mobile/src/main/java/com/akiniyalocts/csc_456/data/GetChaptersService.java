@@ -3,7 +3,7 @@ package com.akiniyalocts.csc_456.data;
 
 import com.akiniyalocts.csc_456.CSCApplication;
 import com.akiniyalocts.csc_456.model.pojos.Chapter;
-import com.akiniyalocts.csc_456.ui.ListFragment;
+import com.akiniyalocts.csc_456.ui.fragments.ListFragment;
 
 import java.util.List;
 

@@ -8,7 +8,6 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.akiniyalocts.csc_456.R;
-import com.akiniyalocts.csc_456.model.API;
 import com.akiniyalocts.csc_456.model.pojos.Chapter;
 import com.akiniyalocts.csc_456.model.pojos.RealmString;
 

@@ -10,8 +10,7 @@ import android.widget.TextView;
 
 import com.akiniyalocts.commons.widgets.MaterialIconTextView;
 import com.akiniyalocts.csc_456.R;
-import com.akiniyalocts.csc_456.model.BadgeMapper;
-import com.akiniyalocts.csc_456.model.Constants;
+import com.akiniyalocts.csc_456.Utils;
 import com.akiniyalocts.csc_456.model.pojos.Badge;
 
 import java.util.List;
@@ -41,9 +40,9 @@ public class BadgesAdapter extends BaseAdapter<Badge, BadgesAdapter.BadgeViewHol
 
         Badge badge = mList.get(position);
 
-        holder.mGlyph.setText(BadgeMapper.get(badge.getBadge()));
+        holder.mGlyph.setText(Utils.BadgeMapper.get(badge.getBadge()));
         holder.mTitle.setText(badge.getTitle());
-        holder.mFrame.setBackgroundColor(Color.parseColor(Constants.getRandomMaterialColor()));
+        holder.mFrame.setBackgroundColor(Color.parseColor(Utils.getRandomMaterialColor()));
     }
 
     public class BadgeViewHolder extends BaseAdapter.BaseViewHolder{

@@ -6,8 +6,9 @@
     android:layout_height="wrap_content"
     android:elevation="100dp"
     android:clickable="true"
-    android:background="@drawable/selectable_background"
-    android:id="@+id/chapters_parent"
+    android:focusable="true"
+    android:background="?android:attr/selectableItemBackground"
+    android:id="@+id/adventures_parent"
     card_view:cardBackgroundColor="@color/cardview_light_background"
     card_view:cardUseCompatPadding="true"
     >

@@ -14,9 +14,8 @@ import android.widget.TextView;
 import com.akiniyalocts.commons.activities.ButterKnifeActivity;
 import com.akiniyalocts.commons.widgets.MaterialIconTextView;
 import com.akiniyalocts.csc_456.R;
+import com.akiniyalocts.csc_456.Utils;
 import com.akiniyalocts.csc_456.data.RealmManager;
-import com.akiniyalocts.csc_456.model.BadgeMapper;
-import com.akiniyalocts.csc_456.model.Constants;
 import com.akiniyalocts.csc_456.model.pojos.Badge;
 
 import butterknife.Bind;
@@ -63,9 +62,9 @@ public class BadgeDetailActivity extends ButterKnifeActivity {
 
             if(badge != null){
 
-                mGlyph.setText(BadgeMapper.get(badge.getBadge()));
+                mGlyph.setText(Utils.BadgeMapper.get(badge.getBadge()));
                 mTitle.setText(badge.getTitle());
-                mFrame.setBackgroundColor(Color.parseColor(Constants.getRandomMaterialColor()));
+                mFrame.setBackgroundColor(Color.parseColor(Utils.getRandomMaterialColor()));
                 mDesc.setText(Html.fromHtml(badge.getDescription()));
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && addTransitionListener()) {

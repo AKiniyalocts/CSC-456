@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.provider.CalendarContract;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
@@ -18,13 +18,22 @@ import android.widget.ImageView;
 
 import com.akiniyalocts.commons.activities.ToolbarActivity;
 import com.akiniyalocts.csc_456.R;
+import com.akiniyalocts.csc_456.Utils;
+import com.akiniyalocts.csc_456.model.pojos.Adventure;
 import com.akiniyalocts.csc_456.model.pojos.Badge;
+import com.akiniyalocts.csc_456.ui.adapters.AdventuresAdapter;
 import com.akiniyalocts.csc_456.ui.adapters.BaseAdapter;
+import com.akiniyalocts.csc_456.ui.fragments.ListFragment;
 import com.squareup.picasso.Picasso;
+
+import java.util.Date;
 
 import butterknife.Bind;
 
-public class MainActivity extends ToolbarActivity implements NavigationView.OnNavigationItemSelectedListener, BaseAdapter.OnItemClickListener<Badge>{
+public class MainActivity extends ToolbarActivity implements
+        NavigationView.OnNavigationItemSelectedListener,
+        BaseAdapter.OnItemClickListener<Badge>,
+        AdventuresAdapter.AdventureClickListener{
 
     private final static String TAG = MainActivity.class.getSimpleName();
 
@@ -76,19 +85,20 @@ public class MainActivity extends ToolbarActivity implements NavigationView.OnNa
 
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
-        switch (menuItem.getItemId()){
+        getSupportFragmentManager().popBackStack();
 
+        switch (menuItem.getItemId()){
+/*
             case R.id.nav_overview:
                 getSupportFragmentManager().beginTransaction()
-                        .disallowAddToBackStack()
                         .replace(R.id.fragment_container, OverviewFragment.newInstance())
                         .commit();
                 safeSetSupportActionBarTitle(R.string.overview);
                 break;
-
+*/
             case R.id.nav_adventure:
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container,ListFragment.newInstance(ListFragment.TYPE_ADVENTURES))
+                        .replace(R.id.fragment_container, ListFragment.newInstance(ListFragment.TYPE_ADVENTURES))
                         .commit();
                 safeSetSupportActionBarTitle(R.string.adventures);
                 break;
@@ -116,6 +126,20 @@ public class MainActivity extends ToolbarActivity implements NavigationView.OnNa
         mDrawerLayout.closeDrawers();
 
         return false;
+    }
+
+    @Override
+    public void onAdventureClicked(Adventure adventure) {
+        Date startTime = Utils.getDateFromString(adventure.getDate() + "/15");
+
+        Intent intent = new Intent(Intent.ACTION_INSERT)
+                .setData(CalendarContract.Events.CONTENT_URI)
+                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startTime.getTime())
+                .putExtra(CalendarContract.Events.TITLE, adventure.getTitle())
+                .putExtra(CalendarContract.Events.DESCRIPTION, adventure.getOverview())
+                .putExtra(CalendarContract.Events.EVENT_LOCATION, "CSC-456")
+                .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY);
+        startActivity(intent);
     }
 
     @Override

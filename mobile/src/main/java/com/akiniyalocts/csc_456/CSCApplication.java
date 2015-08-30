@@ -1,7 +1,5 @@
 package com.akiniyalocts.csc_456;
 
-import android.app.Application;
-
 import com.akiniyalocts.commons.BaseApplication;
 import com.akiniyalocts.commons.logging.aLog;
 import com.akiniyalocts.csc_456.model.API;
@@ -14,10 +12,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.squareup.otto.Bus;
 
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
 import io.realm.RealmList;
-import io.realm.RealmMigration;
 import io.realm.RealmObject;
 import retrofit.RestAdapter;
 import retrofit.converter.GsonConverter;

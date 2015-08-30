@@ -14,8 +14,9 @@
             android:id="@+id/main_toolbar"/>
 
         <fragment android:id="@+id/fragment_container"
+            android:background="@android:color/white"
             android:layout_below="@+id/main_toolbar"
-            android:name="com.akiniyalocts.csc_456.ui.ListFragment"
+            android:name="com.akiniyalocts.csc_456.ui.fragments.ListFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context="com.akiniyalocts.csc_456.MainActivity" />
