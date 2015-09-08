@@ -31,6 +31,9 @@
             android:name=".ui.BadgeDetailActivity"
             android:label="@string/title_activity_badge_detail" >
         </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="8766b0dea155492d305a01279ceed4cf9ad93880" />
     </application>
 
 </manifest>

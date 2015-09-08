@@ -62,7 +62,7 @@ public class BadgeDetailActivity extends ButterKnifeActivity {
 
             if(badge != null){
 
-                mGlyph.setText(Utils.BadgeMapper.get(badge.getBadge()));
+                mGlyph.setText(badge.getUnicode());
                 mTitle.setText(badge.getTitle());
                 mFrame.setBackgroundColor(Color.parseColor(Utils.getRandomMaterialColor()));
                 mDesc.setText(Html.fromHtml(badge.getDescription()));

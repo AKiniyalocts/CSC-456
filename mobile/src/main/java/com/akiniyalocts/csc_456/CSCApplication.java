@@ -5,6 +5,7 @@ import com.akiniyalocts.commons.logging.aLog;
 import com.akiniyalocts.csc_456.model.API;
 import com.akiniyalocts.csc_456.model.RealmStringDeserializer;
 import com.akiniyalocts.csc_456.model.pojos.RealmString;
+import com.crashlytics.android.Crashlytics;
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
@@ -12,6 +13,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.squareup.otto.Bus;
 
+import io.fabric.sdk.android.Fabric;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import retrofit.RestAdapter;
@@ -33,6 +35,7 @@ public class CSCApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
         aLog.setLogging(true);
         getApi();
     }

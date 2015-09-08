@@ -149,9 +149,6 @@ public class MainActivity extends ToolbarActivity implements
 
         ActivityOptionsCompat activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
                 this,
-
-                // Now we provide a list of Pair items which contain the view we can transitioning
-                // from, and the name of the view it is transitioning to, in the launched activity
                 new Pair<View, String>(parentView.findViewById(R.id.badge_glyph),
                         BadgeDetailActivity.BADGE_GLYPH_VIEW_KEY),
                 new Pair<View, String>(parentView.findViewById(R.id.badge_title),

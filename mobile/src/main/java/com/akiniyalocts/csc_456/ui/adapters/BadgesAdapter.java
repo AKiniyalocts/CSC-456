@@ -40,7 +40,7 @@ public class BadgesAdapter extends BaseAdapter<Badge, BadgesAdapter.BadgeViewHol
 
         Badge badge = mList.get(position);
 
-        holder.mGlyph.setText(Utils.BadgeMapper.get(badge.getBadge()));
+        holder.mGlyph.setText(badge.getUnicode());
         holder.mTitle.setText(badge.getTitle());
         holder.mFrame.setBackgroundColor(Color.parseColor(Utils.getRandomMaterialColor()));
     }

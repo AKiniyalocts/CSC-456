@@ -16,6 +16,8 @@ public class Badge extends RealmObject{
 
     private String description;
 
+    private String unicode;
+
     @PrimaryKey
     private int id;
 
@@ -59,4 +61,11 @@ public class Badge extends RealmObject{
         this.id = id;
     }
 
+    public String getUnicode() {
+        return unicode;
+    }
+
+    public void setUnicode(String unicode) {
+        this.unicode = unicode;
+    }
 }
