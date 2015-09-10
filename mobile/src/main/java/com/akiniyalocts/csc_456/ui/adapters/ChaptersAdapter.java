@@ -6,10 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.akiniyalocts.commons.logging.aLog;
 import com.akiniyalocts.csc_456.R;
+import com.akiniyalocts.csc_456.model.API;
 import com.akiniyalocts.csc_456.model.pojos.Chapter;
 import com.akiniyalocts.csc_456.model.pojos.RealmString;
+import com.klinker.android.link_builder.Link;
+import com.klinker.android.link_builder.LinkBuilder;
 
 import java.util.List;
 
@@ -48,7 +53,6 @@ public class ChaptersAdapter extends BaseAdapter<Chapter, ChaptersAdapter.Chapte
 
         String readings = "";
 
-        String slides = "";
 
         for(RealmString topic: chapter.getTopics())
             topics += topic.getStringValue() + "\n";
@@ -56,15 +60,10 @@ public class ChaptersAdapter extends BaseAdapter<Chapter, ChaptersAdapter.Chapte
         for(RealmString reading: chapter.getReadings())
             readings += reading.getStringValue() + "\n";
 
-        for(RealmString slide: chapter.getSlides())
-            slides += "<a href=" + "\"API.SLIDES_HOST" + slide.getStringValue()  + "\">" +
-                    slide.getStringValue().substring(slide.getStringValue().lastIndexOf("/") + 1)
-                    + "</a><br><br>" ;
 
         holder.mTopic.setText(topics);
         holder.mReading.setText(readings);
         holder.mDate.setText(chapter.getDate());
-        holder.mSlides.setText(Html.fromHtml(slides));
 
         if(chapter.isNo_class())
             holder.mHeader.setBackgroundColor(colorGreen);
